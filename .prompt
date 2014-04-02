@@ -1,0 +1,41 @@
+#set prompt_tc    = "%B%{^[[31m%}[%W/%D %T]%{^[[34m%}%n%{^[[35m%}@%{^[[34m%}%m%# "
+#set prompt_tc_rt = "%B%{^[[31;40m%}[%W/%D %T]%{^[[34;40m%}%n%{^[[35;40m%}@%{^[[33;40m%}%m%# "
+#set prompt_b     = "%B[%W/%D %T]%n@%m%# "
+
+#PS1="[\u@\h \W]\$ "
+#PS1="[\D{%m/%d} \A]\u@\h\$ " 
+#PS1="\[\033[31;40m\][\D{%m/%d} \A]\[\033[34;40m\]\u\[\033[35;40m\]@\[\033[34;40m\]\h\$ \033[0m\]" 
+
+set_prompt(){
+#	local PS1_USER="\[\033[1;31m\][\D{%m/%d} \A]\[\033[34m\]\u\[\033[35m\]@\[\033[34m\]\h\$ \033[0m\]" 
+#	local PS1_ROOT="\[\033[1;31m\][\D{%m/%d} \A]\[\033[1;34m\]\u\[\033[1;35m\]@\[\033[1;33m\]\h\\$ \033[0m\]" 
+
+    local PS1_USER="\[\033[2m\]\w\[\033[0m\]\n\[\033[1;31m\][\D{%m/%d} \A]\[\033[34m\]\u\[\033[35m\]@\[\033[34m\]\h\$ \[\033[0m\]"
+    local PS1_ROOT="\[\033[2m\]\w\[\033[0m\]\n\[\033[1;31m\][\D{%m/%d} \A]\[\033[1;34m\]\u\[\033[1;35m\]@\[\033[1;33m\]\h\\$ \033[0m\]"
+
+	if [ $UID == 0 ]; then
+		PS1=$PS1_ROOT
+	else
+		PS1=$PS1_USER
+	fi
+    #PROMPT_COMMAND="$PROMPT_COMMAND;echo -ne \"\\ek\$(basename \$(pwd))\\e\\\\\""
+}
+
+
+if [ -n $TERM ]; then
+	case "$TERM" in
+		vt100|xterm|xterm-256color)
+			set_prompt
+			PROMPT_COMMAND='echo -ne "\033]0;$(whoami)@$(hostname):$(pwd)\007"'
+			;;
+		screen|screen-bce)
+			set_prompt
+			#PROMPT_COMMAND=''
+			#PROMPT_COMMAND='echo -ne "\ek$(basename $(pwd))\e\\"'
+			#PROMPT_COMMAND='echo -ne "\ek$(basename $(pwd))\e\\"; echo -ne "\e_$(whoami)@${HOSTNAME%%.*}:$(pwd)\e\\"'
+			PROMPT_COMMAND='echo -ne "\ek$(basename $(pwd) | strings -n1)\e\\"; echo -ne "\e_$(whoami)@${HOSTNAME%%.*}:$(pwd | strings -n1 | tr -d "\r" | tr -d "\n")\e\\"'
+			#PROMPT_COMMAND='echo -ne "\ek$(basename $(pwd) | sed "s/[^a-zA-Z0-9]//")\e\\"; echo -ne "\e_$(whoami)@${HOSTNAME%%.*}:$(pwd) | sed "s/[^a-zA-Z0-9]//"\e\\"'
+			;;
+	esac
+fi
+

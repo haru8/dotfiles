@@ -1,0 +1,103 @@
+# GNU screen config
+
+defencoding UTF-8
+encoding UTF-8
+kanji UTF-8
+defkanji UTF-8
+# コマンドキー
+escape ^zz
+#zombie ^[
+
+# スクロールバッファ
+defscrollback 30000
+defhstatus "^En:^Et"
+
+# 別画面サポート。Vimやless使うときに便利
+altscreen on
+
+# 現在の背景色で消去する
+defbce on
+
+# 太字には明るい色を使う
+attrcolor b ".I"
+
+# 256色表示設定
+#term xterm-256color
+
+# PuTTYで接続したときにウィンドウの大きさを変更しないようにする
+termcapinfo xterm-256color 'is=rm2JH?7h?1;4;6l'
+termcapinfo xterm 'is=rm2JH?7h?1;4;6l'
+
+# 256色拡張
+# (frexx.de/xterm-256-notes/ の設定を改良したもの)
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm:hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+termcapinfo rxvt-256color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm:hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+
+## シェルのウィンドウタイトル(好みで変更)
+#shelltitle "$ |$SHELL"
+#shelltitle "$ |sh"
+shelltitle "$ |*"
+#shelltitle "$ | shell"
+
+#caption string "%?%F%{.R.}%?%3n %t%? [%h]%?"
+#caption always "{= wk} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wb}%y/%m/%d(%D) %{=b wb}%c"
+#caption always "%{= dd}%`"
+#caption always "%{=r dd}%-Lw%40L>%?%F%{=b dR}%:[%? %n%f %t %?%F%{-}%:]%?%+Lw %?%F%-024=GNU Screen of Git master%:%=%?"
+#caption always "%{= Rk} %?%F%{b kr}%? %?%h%:%t (screen #%n)%? %{-}"
+#caption always "%{= wb} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wk} [%l] %{=b wb}%y/%m/%d(%D) %{=b wm}%c"
+caption always "%{=b Kw} %-w%40L>%{b kg} %n %t %{-}%+w%-037=%{b km} %l %{.b} %Y/%m/%d %c:%s "
+
+#hardstatus alwayslastline "[%02c] %`%w"
+#hardstatus alwayslastline "[%02c] %-w[%n %t]%+w"
+#hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
+##hardstatus alwayslastline "[%02c] %-w%40L>%{=b by}%n %t%{-}%+w%<"
+#hardstatus alwayslastline "[%02c] %`%-Lw%{=b ky}%40L>%n %t%{-}%+Lw"
+#hardstatus alwayslastline "[%02c] %-Lw%{=b ky}%50>%n%f* %t%{-}%+Lw%<"
+#hardstatus string "[screen %n: %t] %h"
+#hardstatus string "%?%h%:%t (screen #%n on %H)%?"
+#hardstatus alwayslastline "%{=b Kw} %-w%40L>%{b kg} %n %t %{-}%+w%-037=%{b km} %l %{.b} %Y/%m/%d %c:%s "
+#hardstatus alwayslastline "%{=b Kw} %-w%40L>%{b kg} %n %t %{-}%+w%-037=%{b km} %l %{.b} %Y/%m/%d %c:%s "
+#hardstatus alwayslastline "%{=b Kw} %-w%40L>%{b kg} %n %t %{-}%+w%-010= [%02c] "
+hardstatus string "[%n:%t] %h"
+
+
+#sorendition "+rb .k"
+sorendition "= yk"
+
+logfile "/home/haru/log/screen/screen-%Y%m%d-%n.log"
+log on
+deflog on
+
+bind w windowlist -b
+bind r eval 'echo "Resize window"' 'command -c resize'
+bind -c resize ^]  command
+bind -c resize j eval 'resize +1' 'command -c resize'
+bind -c resize k eval 'resize -1' 'command -c resize'
+
+bind - command -c minus
+bind -c minus 0 select 10
+bind -c minus 1 select 11
+bind -c minus 2 select 12
+bind -c minus 3 select 13
+bind -c minus 4 select 14
+bind -c minus 5 select 15
+bind -c minus 6 select 16
+bind -c minus 7 select 17
+bind -c minus 8 select 18
+bind -c minus 9 select 19
+bind -c minus - command -c minus2
+bind -c minus2 0 select 20
+bind -c minus2 1 select 21
+bind -c minus2 2 select 22
+bind -c minus2 3 select 23
+bind -c minus2 4 select 24
+bind -c minus2 5 select 25
+bind -c minus2 6 select 26
+bind -c minus2 7 select 27
+bind -c minus2 8 select 28
+bind -c minus2 9 select 29
+bind ^x
+
+#encoding eucjp utf8
+#encoding utf8 utf8
+

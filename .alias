@@ -1,0 +1,30 @@
+alias ls='ls -CFh --color=auto'
+alias du='du -h'
+alias df='df -h'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+alias c='clear'
+alias j='jobs'
+alias h='history'
+alias less='less -iM -j5 -x4'
+alias grepc='grep --color=always'
+alias ctags='ctags -R --langmap=PHP:.php.inc --php-types=cfdv'
+
+alias syncjob='rsync -zav /var/www/jobeet haru@yukikaze.dyndns.org:/var/www/'
+alias svnu='SNVLOG=`date "+/home/haru/log/svn/%Y%m%d_%H%M%S.log"`; pwd >> $SNVLOG; svn up 2>&1 | tee -a $SNVLOG'
+
+
+
+#rmv(){
+#  ARG1=$1
+#  ARG2=$2
+#
+#  if [ "$ARG1" = '-fr' ]: then
+#    if [ "$ARG2" = '/' ]; then
+#      echo 'バルス'
+#    fi
+#  fi
+#
+#}
+
