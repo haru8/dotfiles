@@ -6,7 +6,6 @@ FILES='.alias
 .bashrc
 .editrc
 .exrc
-.link.sh.swp
 .prompt
 .screenrc
 .tmux.conf
@@ -14,7 +13,8 @@ FILES='.alias
 
 
 for file in $FILES; do
-    echo ln -s ~/dotfiles/${file} ~/${file}
-    #ln -sf ~/dotfiles/${file} ~/${file}
+    CMD="ln -s ~/dotfiles/${file} ~/${file}"
+    echo $CMD
+    eval $CMD
 done
 
