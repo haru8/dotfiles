@@ -16,15 +16,12 @@ alias svnu='SNVLOG=`date "+/home/haru/log/svn/%Y%m%d_%H%M%S.log"`; pwd >> $SNVLO
 
 alias sshyukivnc='ssh haru@yukikaze.dyndns -L 5916:192.168.1.16:5901'
 
-#rmv(){
-#  ARG1=$1
-#  ARG2=$2
-#
-#  if [ "$ARG1" = '-fr' ]: then
-#    if [ "$ARG2" = '/' ]; then
-#      echo 'バルス'
-#    fi
-#  fi
-#
-#}
+
+alias dstat-full='dstat -Tclmdrn'
+alias dstat-mem='dstat -Tclm'
+alias dstat-cpu='dstat -Tclr'
+alias dstat-net='dstat -Tclnd'
+alias dstat-disk='dstat -Tcldr'
+alias dstat-log='dstat -Ttclmgsdrn --tcp --udp -py --output /tmp/dstat_`uname -n`_`date "+%Y%m%d_%H%M%S"`.csv 10'
+
 
