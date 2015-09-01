@@ -7,8 +7,10 @@ fi
 
 # User specific environment and startup programs
 
-PATH=$PATH:$HOME/bin
+PATH=/usr/local/python2.7/bin/:$HOME/bin:$PATH
 export PATH
+export PYTHONPATH=/usr/local/python2.7/lib/python2.7/site-packages/
+
 #export TERM=xterm-256color
 export TERM=xterm
 export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/local/lib/pkgconfig
