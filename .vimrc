@@ -1,3 +1,6 @@
+set encoding=utf-8
+scriptencoding utf-8
+
 "" " 文字コードの自動認識
 " if &encoding !=# 'utf-8'
 "   set encoding=japan
@@ -59,43 +62,52 @@ endif
  " 改行コードの自動認識
 set fileformats=unix,dos,mac
 " □とか○の文字があってもカーソル位置がずれないようにする
-if exists('&ambiwidth')
-  set ambiwidth=double
-endif
+"if exists('&ambiwidth')
+"  set ambiwidth=double
+"endif
+
+"set nocompatible                           "コンパチブルモードをオフ
+"set encoding=utf-8
 
 "set langmenu=japanese
-"set encoding=utf-8							"端末文字コード
-"set fileencodings=iso-2022-jp,sjis,euc-jp	"ファイル文字コード
-"set fileencodings=euc-jp,sjis,iso-2022-jp	"ファイル文字コード
-"set nu										"行番号表示
+"set fileencodings=iso-2022-jp,sjis,euc-jp  "ファイル文字コード
+"set fileencodings=euc-jp,sjis,iso-2022-jp  "ファイル文字コード
+"set nu                                     "行番号表示
 
-"set autoindent								" オートインデント
-"set smartindent								" スマートインデント
+set fileencoding=utf-8 " 保存時の文字コード
+set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
+set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
+set ambiwidth=double " □や○文字が崩れる問題を解決
+
+
+set autoindent                              " オートインデント
+set smartindent                             " スマートインデント
+set paste                                   " 貼り付け
 "set cindent
-"set smarttab								" スマートタブ
-set showmatch								" 閉じ括弧が入力時、対応する括弧を表示
-set smartcase								" 検索時に大文字を含んでいたら大/小を区別
-set showmode								" 
-set nowrapscan								" 検索をファイルの先頭へループしない
+"set smarttab                               " スマートタブ
+set showmatch                               " 閉じ括弧が入力時、対応する括弧を表示
+set smartcase                               " 検索時に大文字を含んでいたら大/小を区別
+set showmode                                " モードを表示
+set nowrapscan                              " 検索をファイルの先頭へループしない
 
-"set expandtab								" タブの代わりに空白文字を挿入
-"set noexpandtab								" 
-set shiftwidth=4							" シフト移動幅
-set softtabstop=4							"
-set tabstop=4								" タブ幅
+set expandtab                               " タブの代わりに空白文字を挿入
+"set noexpandtab                                "
+set shiftwidth=4                            " シフト移動幅
+set softtabstop=4                           "
+set tabstop=4                               " タブ幅
 
 " 単語
 "set iskeyword=!-~,^*,^45,^124,^34,192-255,^_
 set iskeyword+=$,.
 
-set laststatus=2							" ステータスラインを表示
+set laststatus=1                           " ステータスラインを表示
 
 " ステータスラインに文字コード、モードを表示
-set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']['.&ft.']'}\ %F%=%l/%L,%c%V%8P
+"set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']['.&ft.']'}\ %F%=%l/%L,%c%V%8P
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 " ステータスラインの色
-highlight StatusLine   term=NONE cterm=NONE ctermfg=black ctermbg=white
+"highlight StatusLine   term=NONE cterm=NONE ctermfg=black ctermbg=white
 
 " 入力モード時、ステータスラインのカラーを変更
 "augroup InsertHook
@@ -110,17 +122,17 @@ match ZenkakuSpace /　/
 
 " TAB、改行 を視覚化
 "highlight Tab cterm=underline ctermfg=7 guibg=white
-"match Tab /	/
+"match Tab /    /
 highlight SpecialKey ctermfg=7 guibg=#222222
 "set listchars=tab:>-
-"set listchars=tab:^\ 
+"set listchars=tab:^\
 set nolist
 "set listchars=tab:^\ ,eol:<
 set lcs=tab:>.,eol:$,trail:_,extends:\
 
-"set foldmethod=marker						"マーカー文字列で折り畳む
+"set foldmethod=marker                      "マーカー文字列で折り畳む
 "let c:c_syntax_folding = 1
-set foldmethod=syntax						"マーカー文字列で折り畳む
+set foldmethod=syntax                      "マーカー文字列で折り畳む
 
 "閉じ括弧を自動入力
 "inoremap { {}<LEFT>
@@ -142,9 +154,9 @@ set noshowmatch
 
 
 " カーソル位置の単語をヤンクした単語に置換
-nnoremap <silent> ciy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
-nnoremap <silent> cy   ce<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
-vnoremap <silent> cy   c<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+"nnoremap <silent> ciy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+"nnoremap <silent> cy   ce<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+"vnoremap <silent> cy   c<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 
 
 highlight MatchParen term=standout ctermbg=LightGrey ctermfg=Black guibg=LightGrey guifg=Black
@@ -165,6 +177,26 @@ endif
 
 "カラースキーマ
 ":colorscheme peachpuff
+
+" 行末の空白を削除する
+"autocmd BufWritePre * :%s/\s\+$//ge
+function! s:remove_dust()
+    let cursor = getpos(".")
+    " 保存時に行末の空白を除去する
+    %s/\s\+$//ge
+    " 保存時にtabをスペースに変換する
+    " %s/\t/  /ge
+    %retab!
+    call setpos(".", cursor)
+    unlet cursor
+endfunction
+autocmd BufWritePre * call <SID>remove_dust()
+
+" 永続的Undo
+if has('persistent_undo')
+  set undodir=~/.vim/undo
+  set undofile
+endif
 
 
 " ---- memo -----

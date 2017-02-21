@@ -19,6 +19,7 @@ set_prompt(){
 		PS1=$PS1_USER
 	fi
     #PROMPT_COMMAND="$PROMPT_COMMAND;echo -ne \"\\ek\$(basename \$(pwd))\\e\\\\\""
+    #PROMPT_COMMAND='echo -ne "\ek$(basename $(pwd))\e\\"'
 }
 
 

@@ -7,13 +7,13 @@ fi
 
 # User specific environment and startup programs
 
-PATH=/usr/local/python2.7/bin/:$HOME/bin:$PATH
+PATH=$HOME/bin:$PATH
 export PATH
-export PYTHONPATH=/usr/local/python2.7/lib/python2.7/site-packages/
+#export PYTHONPATH=/usr/local/python2.7/lib/python2.7/site-packages/
 
 #export TERM=xterm-256color
 export TERM=xterm
-export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/local/lib/pkgconfig
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib64/pkgconfig:/usr/lib/pkgconfig
 export SSH_ASKPASS=~/bin/git_pass.sh
 
 agent="$HOME/tmp/ssh-agent-$USER"
@@ -36,7 +36,7 @@ if [ -n $SSH_TTY ]; then
       tmux -2u attach
       #tmux -2u attach -d
     else
-      tmux new-session
+      tmux -2u new-session
     fi
 fi
 

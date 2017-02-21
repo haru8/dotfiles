@@ -8,7 +8,7 @@ fi
 # User specific aliases and functions
 
 export EDITOR=vim
-export PAGER='less -iM -j5 -x4'
+export PAGER='less -iM -j5 -x4 -X'
 
 export HISTFILESIZE=1000000
 HISTTIMEFORMAT='%Y-%m-%d %T '
@@ -22,7 +22,8 @@ if [ -f ~/.prompt ]; then
     . ~/.prompt
 fi
 
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-export LIBRARY_PATH=/usr/local/lib:$LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:$LD_LIBRARY_PATH
+export LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:$LIBRARY_PATH
+export LDPATH=/usr/local/lib:/usr/lib:/usr/local/lib64
 export CPATH=/usr/local/include:$CPATH
 

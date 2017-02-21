@@ -4,10 +4,11 @@ alias df='df -h'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
+alias crontab='crontab -i'
 alias c='clear'
 alias j='jobs'
 alias h='history'
-alias less='less -iM -j5 -x4'
+alias less='less -iM -j5 -x4 -X'
 alias grepc='grep --color=always'
 alias ctags='ctags -R --langmap=PHP:.php.inc --php-types=cfdv'
 
@@ -24,4 +25,4 @@ alias dstat-net='dstat -Tclnd'
 alias dstat-disk='dstat -Tcldr'
 alias dstat-log='dstat -Ttclmgsdrn --tcp --udp -py --output /tmp/dstat_`uname -n`_`date "+%Y%m%d_%H%M%S"`.csv 10'
 
-
+alias tsrm.sh='tsrm.sh -t'
