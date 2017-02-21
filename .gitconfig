@@ -1,0 +1,23 @@
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[alias]
+  mylog = log --graph --name-status --pretty=format:\"%C(red)%h %C(green)%an %Creset%s %C(yellow)%d%Creset\"
+  log2  = log --graph --name-status
+  logdiff = log -U1 --word-diff
+  st    = status
+  co    = checkout
+  ci    = commit
+  br    = branch -a
+
+[pager]
+  log  = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
+
+[user]
+	name = haru
+	email = haru.t84@gmail.com
+[push]
+	default = simple

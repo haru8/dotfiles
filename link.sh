@@ -9,11 +9,13 @@ FILES='.alias
 .prompt
 .screenrc
 .tmux.conf
-.vimrc'
+.vimrc
+.gitconfig
+.my.cnf'
 
 
 for file in $FILES; do
-    CMD="ln -s ~/dotfiles/${file} ~/${file}"
+    CMD="ln -sf ~/dotfiles/${file} ~/${file}"
     echo $CMD
     eval $CMD
 done
