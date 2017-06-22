@@ -2,7 +2,7 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+    . /etc/bashrc
 fi
 
 # User specific aliases and functions
@@ -11,7 +11,9 @@ export EDITOR=vim
 export PAGER='less -iM -j5 -x4 -X'
 
 export HISTFILESIZE=1000000
-HISTTIMEFORMAT='%Y-%m-%d %T '
+export HISTSIZE=5000
+export HISTCONTROL=ignoreboth
+export HISTTIMEFORMAT='%Y-%m-%d %T '
 
 
 if [ -f ~/.alias ]; then
