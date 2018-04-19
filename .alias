@@ -16,7 +16,7 @@ alias syncjob='rsync -zav /var/www/jobeet haru@yukikaze.dyndns.org:/var/www/'
 alias svnu='SNVLOG=`date "+/home/haru/log/svn/%Y%m%d_%H%M%S.log"`; pwd >> $SNVLOG; svn up 2>&1 | tee -a $SNVLOG'
 
 alias sshyukivnc='ssh haru@yukikaze.dyndns -L 5916:192.168.1.16:5901'
-alias psa="ps -ef | grepc -E 'apache|rtmpdump|ffmpeg|rec' | grep -Ev 'httpd|-bash|grep|root'"
+alias psa="ps -ef | grepc -E 'apache|rtmpdump|ffmpeg|rec|recpt1|recdvb' | grep -Ev 'httpd|-bash|grep|root|php-fpm'"
 
 
 alias dstat-full='dstat -Tclmdrn'
